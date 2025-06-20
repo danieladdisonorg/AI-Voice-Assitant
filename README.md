@@ -1,112 +1,201 @@
-# AI Voice Assistant: Your Intelligent Conversational Companion
+# AI Voice Assistant
 
-**Transform your digital interactions with your own AI Voice Assistant🎙️🤖**
+[![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-This project is an advanced AI Voice Assistant that integrates Text-to-Speech (TTS) and Speech-to-Text (STT) capabilities, allowing users to communicate directly with the agent and receive vocal responses. The assistant can utilize various tools to fulfill user requests, including managing calendars, contacts, emails, and performing web searches.
+An advanced AI-powered voice assistant that combines speech-to-text and text-to-speech capabilities with intelligent tool integration for seamless digital interactions.
 
-## Features
+## Overview
 
-- **Speech-to-Text (STT)**: Convert spoken language into written text.
+This AI Voice Assistant provides natural conversational experiences through voice interaction while offering powerful integrations with Google services, web search, and personal knowledge management. The assistant can understand spoken commands, process requests using various tools, and respond with synthesized speech.
 
-- **Text-to-Speech (TTS)**: Generate vocal responses from text input.
+## Key Features
 
-- **Vocal Interaction**: Engage in natural conversations with the AI assistant.
+### Core Capabilities
+- **Speech Recognition**: Real-time speech-to-text conversion using Deepgram API
+- **Voice Synthesis**: Natural text-to-speech responses
+- **Conversational AI**: Powered by advanced language models (Llama3, Gemini)
+- **Multi-tool Integration**: Seamless access to productivity and information tools
 
-- **Tool Integration**: Utilize built-in tools for calendar management, contact handling, email composition, web searching, and personal knowledge base access.
+### Integrated Tools
 
-### Available Tools
+| Tool | Description | Functionality |
+|------|-------------|---------------|
+| **CalendarTool** | Google Calendar integration | Schedule events with date, time, and descriptions |
+| **AddContactTool** | Contact management | Add new contacts to Google Contacts |
+| **FetchContactTool** | Contact retrieval | Search and retrieve contact information |
+| **EmailingTool** | Gmail integration | Compose and send emails |
+| **SearchWebTool** | Web search | Access real-time web information via Tavily API |
+| **KnowledgeBaseTool** | Personal knowledge base | Query documents from `/files` directory |
 
-- **CalendarTool**: Book events on Google Calendar with event name, date/time, and optional description.
-
-- **AddContactTool**: Add new contacts to Google Contacts with name, phone number, and optional email address.
-
-- **FetchContactTool**: Retrieve contact information from Google Contacts by searching with the contact's name.
-
-- **EmailingTool**: Send emails via Gmail by providing recipient name, subject, and body content.
-
-- **SearchWebTool**: Perform web searches to gather up-to-date information.
-
-- **KnowledgeBaseTool**: Access the user's personal notes and saved information from your custom knowledge base (all the documents included in the `/files` folder)
-
-## How to Run
+## Installation
 
 ### Prerequisites
 
-- Python 3.9+
+- Python 3.9 or higher
+- Google Cloud Platform account with API access
+- Required API keys (see configuration section)
 
-- Google API credentials (for Calendar, Contacts, and Gmail access)
+### Quick Start
 
-- Tavily API key (for web search)
-
-- Groq API key (for Llama3)
-
-- Google Gemini API key (for using the Gemini model)
-
-- Deepgram API key (for voice processing)
-
-- Necessary Python libraries (listed in `requirements.txt`)
-
-### Setup
-
-1. **Clone the repository:**
-
-```sh
-git clone https://github.com/yourusername/AI-Voice-assistant.git
-cd AI-Voice-assistant
+1. **Clone the repository**
+```bash
+git clone https://github.com/danieladdisonorg/AI-Voice-Assitant.git
 ```
 
-2. **Create and activate a virtual environment:**
+2. **Navigate to project directory**
+```bash
+cd AI-Voice-Assitant
+```
 
-```sh
+3. **Create virtual environment**
+```bash
 python -m venv venv
-source venv/bin/activate # On Windows use `venv\Scripts\activate`
 ```
 
-3. **Install the required packages:**
+4. **Activate virtual environment**
+```bash
+source venv/bin/activate
+```
 
-```sh
+5. **Install dependencies**
+```bash
 pip install -r requirements.txt
 ```
 
-4. **Set up environment variables:**
+## Configuration
 
-Create a `.env` file in the root directory of the project and add your API keys:
+### Environment Variables
+
+Create a `.env` file in the project root:
 
 ```env
+# Google Services
 GOOGLE_API_KEY=your_google_api_key
-DEEPGRAM_API_KEY=your_deepgram_api_key
-TAVILY_API_KEY=your_tavily_api_key
 GEMINI_API_KEY=your_gemini_api_key
+
+# Speech Processing
+DEEPGRAM_API_KEY=your_deepgram_api_key
+
+# Web Search
+TAVILY_API_KEY=your_tavily_api_key
+
+# Language Model
 GROQ_API_KEY=your_groq_api_key
 ```
 
-5. **Configure Google API credentials:**
+### Google API Setup
 
-Follow Google's documentation to set up credentials for Calendar, Contacts, and Gmail APIs. Save the credentials file in a secure location and update the path in the configuration file.
+1. Visit the [Google Cloud Console](https://console.cloud.google.com/)
+2. Create a new project or select an existing one
+3. Enable the following APIs:
+   - Google Calendar API
+   - Google Contacts API
+   - Gmail API
+4. Create service account credentials
+5. Download the credentials JSON file
+6. Update the credentials path in your configuration
 
-### Running the Application
+### API Key Acquisition
 
-1. **Start a conversation with the assistant:**
+- **Deepgram**: [Sign up](https://deepgram.com/) for speech-to-text services
+- **Tavily**: [Register](https://tavily.com/) for web search API access
+- **Groq**: [Get API key](https://groq.com/) for Llama3 model access
+- **Google Gemini**: Available through Google AI Studio
 
-```sh
+## Usage
+
+### Starting the Assistant
+
+```bash
 python main.py
 ```
 
-The assistant is programmed to stop the conversation when the user says "goodbye".
+### Voice Commands Examples
 
-## Usage Examples
+**Calendar Management**
+- "Schedule a team meeting for tomorrow at 3 PM"
+- "Book a doctor's appointment for Friday at 10 AM"
 
-- "Schedule a meeting with John for tomorrow at 2 PM."
-- "Add a new contact: Jane Doe, phone number 555-1234."
-- "What's Mary's email address?"
-- "Send an email to Bob with the subject 'Project Update'."
-- "Search the web for recent news about artificial intelligence."
-- "What was the recipe I saved last week for chocolate chip cookies?"
+**Contact Management**
+- "Add Sarah Johnson to my contacts, phone number 555-0123"
+- "What's Mike's email address?"
+
+**Email Communication**
+- "Send an email to Jennifer about the quarterly report"
+- "Compose a message to the development team"
+
+**Information Retrieval**
+- "Search for the latest news on renewable energy"
+- "Find my notes about the marketing strategy"
+
+**Session Management**
+- Say "goodbye" to end the conversation
+
+## Project Structure
+
+```
+AI-Voice-Assitant/
+├── main.py                 # Application entry point
+├── requirements.txt        # Python dependencies
+├── .env                   # Environment variables (create this)
+├── files/                 # Personal knowledge base documents
+├── tools/                 # Tool implementations
+└── README.md              # Project documentation
+```
 
 ## Contributing
 
-Contributions are welcome! Please open an issue or submit a pull request for any changes.
+We welcome contributions! Please follow these steps:
 
-## Contact
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
-If you have any questions or suggestions, feel free to contact me at `aymenMir1001@gmail.com`.
+### Development Guidelines
+
+- Follow PEP 8 style guidelines
+- Add unit tests for new features
+- Update documentation for API changes
+- Ensure all tests pass before submitting
+
+## Troubleshooting
+
+### Common Issues
+
+**Authentication Errors**
+- Verify all API keys are correctly set in `.env`
+- Check Google Cloud credentials and permissions
+
+**Speech Recognition Issues**
+- Ensure microphone permissions are granted
+- Verify Deepgram API key is valid
+
+**Tool Integration Problems**
+- Confirm Google APIs are enabled in Cloud Console
+- Check service account permissions
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Support
+
+For questions, issues, or suggestions:
+
+- **Email**: aymenMir1001@gmail.com
+- **Issues**: [GitHub Issues](https://github.com/danieladdisonorg/AI-Voice-Assitant/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/danieladdisonorg/AI-Voice-Assitant/discussions)
+
+## Acknowledgments
+
+- [Deepgram](https://deepgram.com/) for speech processing capabilities
+- [Google Cloud](https://cloud.google.com/) for productivity service integrations
+- [Tavily](https://tavily.com/) for web search functionality
+- [Groq](https://groq.com/) for language model inference
+
+---
+
+**Built with ❤️ for seamless AI-human interaction**
